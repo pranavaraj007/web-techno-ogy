@@ -1,0 +1,17 @@
+body {
+    background-color: #e6f2ff;
+}
+
+a {
+    text-decoration: none;
+    color: darkred;
+    font-weight: bold;
+}
+
+a:hover {
+    color: blue;
+}
+
+img {
+    border: 3px solid black;
+}
