@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chennai Map with Hotspots</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+        .container {
+            display: flex;
+        }
+        .left {
+            width: 60%;
+            padding: 10px;
+        }
+        .right {
+            width: 40%;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        iframe {
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Chennai City Map with Hotspots</h1>
+
+<div class="container">
+
+    <div class="left">
+        <p style="color: green; font-weight: bold;">
+            Click on the hotspots to know more about locations
+        </p>
+
+        <img src="chennai-map.jpg" alt="Chennai Map" usemap="#chennaitheme" width="600" height="400">
+
+        <map name="chennaitheme">
+            <area shape="rect" coords="100,150,180,220"
+                  href="https://en.wikipedia.org/wiki/Marina_Beach"
+                  target="content"
+                  alt="Marina Beach">
+
+            <area shape="rect" coords="300,200,380,260"
+                  href="https://en.wikipedia.org/wiki/Chennai_Central_railway_station"
+                  target="content"
+                  alt="Chennai Central">
+
+            <area shape="rect" coords="420,120,500,190"
+                  href="https://en.wikipedia.org/wiki/Anna_Nagar"
+                  target="content"
+                  alt="Anna Nagar">
+        </map>
+    </div>
+
+    <div class="right">
+        <h3>Location Details</h3>
+        <iframe name="content"
+                src="https://en.wikipedia.org/wiki/Chennai"
+                width="100%"
+                height="300">
+        </iframe>
+
+        <br><br>
+
+        <a href="https://www.google.com/maps/place/Chennai" target="_blank">
+            Open Chennai in Google Maps
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
