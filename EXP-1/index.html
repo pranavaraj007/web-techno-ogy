@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Chennai Map with Hotspots</title>
+    <title>Chennai Interactive Map</title>
+    <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="styles.css">
-
+    <!-- Embedded CSS -->
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
         h1 {
             text-align: center;
-            color: darkblue;
+            color: #ffffff;
+            margin: 15px 0;
         }
-        .container {
+
+        .selector {
             display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
         }
-        .left {
-            width: 60%;
-            padding: 10px;
+
+        .spot {
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 16px;
+            background: linear-gradient(145deg, #ffdddd, #ffffff);
+            border-radius: 12px;
+            border: 2px solid #ff3d3d;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
         }
-        .right {
-            width: 40%;
-            padding: 10px;
-            background-color: #f4f4f4;
+
+        .spot:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 14px rgba(0,0,0,0.35);
         }
-        iframe {
-            border: 2px solid #333;
+
+        .spot.back {
+            border-color: #2196f3;
+            background: linear-gradient(145deg, #d6ecff, #ffffff);
         }
     </style>
 </head>
 
 <body>
 
-<h1>Chennai City Map with Hotspots</h1>
+<h1>Chennai Interactive Map with Connected Hotspots</h1>
 
-<div class="container">
+<div class="layout">
 
-    <div class="left">
-        <p style="color: green; font-weight: bold;">
-            Click on the hotspots to know more about locations
-        </p>
+    <!-- LEFT PANEL -->
+    <iframe src="left.html" class="side"></iframe>
 
-        <img src="chennai-map.jpg" alt="Chennai Map" usemap="#chennaitheme" width="600" height="400">
+    <!-- CENTER -->
+    <div class="center">
 
-        <map name="chennaitheme">
-            <area shape="rect" coords="100,150,180,220"
-                  href="https://en.wikipedia.org/wiki/Marina_Beach"
-                  target="content"
-                  alt="Marina Beach">
+        <!-- MAP 1 -->
+        <div class="card">
+            <h2>Chennai Region Map</h2>
 
-            <area shape="rect" coords="300,200,380,260"
-                  href="https://en.wikipedia.org/wiki/Chennai_Central_railway_station"
-                  target="content"
-                  alt="Chennai Central">
+            <iframe
+                name="mainMap"
+                src="https://www.google.com/maps?q=Chennai&z=11&output=embed"
+                class="map">
+            </iframe>
+        </div>
 
-            <area shape="rect" coords="420,120,500,190"
-                  href="https://en.wikipedia.org/wiki/Anna_Nagar"
-                  target="content"
-                  alt="Anna Nagar">
-        </map>
+        <!-- MAP 2 -->
+        <div class="card">
+            <h2>Chennai Hotspot Selector</h2>
+
+            <div class="selector">
+                <a class="spot"
+                   href="https://www.google.com/maps?q=Chennai+Central+Railway+Station&z=15&output=embed"
+                   target="mainMap">📍 Chennai Central</a>
+
+                <a class="spot"
+                   href="https://www.google.com/maps?q=Marina+Beach+Chennai&z=15&output=embed"
+                   target="mainMap">📍 Marina Beach</a>
+
+                <a class="spot"
+                   href="https://www.google.com/maps?q=IIT+Madras&z=15&output=embed"
+                   target="mainMap">📍 IIT Madras</a>
+
+                <a class="spot back"
+                   href="https://www.google.com/maps?q=Chennai&z=11&output=embed"
+                   target="mainMap">🔄 Back to Chennai View</a>
+            </div>
+
+            <p class="info">
+                Click a location to zoom the map. Use reset to return to Chennai view.
+            </p>
+        </div>
+
     </div>
 
-    <div class="right">
-        <h3>Location Details</h3>
-        <iframe name="content"
-                src="https://en.wikipedia.org/wiki/Chennai"
-                width="100%"
-                height="300">
-        </iframe>
-
-        <br><br>
-
-        <a href="https://www.google.com/maps/place/Chennai" target="_blank">
-            Open Chennai in Google Maps
-        </a>
-    </div>
+    <!-- RIGHT PANEL -->
+    <iframe src="right.html" class="side"></iframe>
 
 </div>
 
